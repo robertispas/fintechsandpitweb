@@ -1,0 +1,10 @@
+#options {
+    display: inline;
+}
+
+.center {
+    display: fixed;
+    justify-content: center;
+    top: 50%;
+    left: 50%;
+}
