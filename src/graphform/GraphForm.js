@@ -1,6 +1,10 @@
 import React from 'react';
 import { Component } from 'react';
 
+/*
+  This components creates a form in which the user can input all the data necessary
+  to create a graph. If you forget to input something, you'll get a heads up!
+*/
 class GraphForm extends Component {
     
   constructor(props) {
@@ -24,7 +28,8 @@ class GraphForm extends Component {
     var splitT = event.target.value.split(',');
     var i;
     for (i = 0; i < splitT.length; i++){
-      numbersTemp.push(parseInt(splitT[i], 10));
+      if (splitT[i] !== isNaN) 
+        numbersTemp.push(parseInt(splitT[i], 10));
     }
     this.setState({
       numbers: numbersTemp
@@ -37,11 +42,18 @@ class GraphForm extends Component {
     })
   }
 
+  /*
+    A simple submit function, that also does some input validation.
+  */
   onSubmitButton = (event) => {
     let user = this.state;
-    this.props.loadData(user);
-    this.props.onSubmitChange(true);
-    console.log(user)
+    if (user.graphName === '' || user.numbers.length <= 1){
+      alert('Check the form, some details are missing! Also, make sure there is more than 1 number entered!')
+    }
+    else {
+      this.props.loadData(user);
+      this.props.onSubmitChange(true);
+    }
   }
 
   render() {
@@ -59,12 +71,12 @@ class GraphForm extends Component {
                     onChange={this.onNumbersChange}/>
           </div>
           <div className="measure">
-            <input className="mr2 bg-transparent" type="radio" id="barchart" value="barchart" checked={this.state.option === "column"}
+            <input className="mr2 bg-transparent" type="radio" id="barchart" value="column" checked={this.state.option === "column"}
                     onChange={this.onOptionChange}/>
             <label for="barchart" className="lh-copy b white f6">Bar Chart</label>
           </div>
           <div className="measure">
-            <input className="mr2 bg-transparent" type="radio" id="linechart" value="linechart" checked={this.state.option === "spline"}
+            <input className="mr2 bg-transparent" type="radio" id="linechart" value="spline" checked={this.state.option === "spline"}
                     onChange={this.onOptionChange}/>
             <label for="linechart" className="lh-copy b white f6">Line Chart</label>
           </div>

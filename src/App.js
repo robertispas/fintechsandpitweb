@@ -17,6 +17,9 @@ const particlesOptions = {
     }
   }
 
+/*
+  The core component, which takes all the components and adds them together
+*/
 class App extends Component {
   
   constructor(){
@@ -36,7 +39,6 @@ class App extends Component {
       option: graphDetails.option,
       chart: graphDetails.chart
     })
-    console.log(this.state, 'State after graph details added');
   }
 
   onSubmitChange = (isChart) => {
