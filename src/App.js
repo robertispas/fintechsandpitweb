@@ -32,10 +32,11 @@ class App extends Component {
   loadData = (graphDetails) =>{
     this.setState({
       graphName: graphDetails.graphName,
-      numbers: graphDetails.number,
+      numbers: graphDetails.numbers,
       option: graphDetails.option,
+      chart: graphDetails.chart
     })
-    console.log(this.state);
+    console.log(this.state, 'State after graph details added');
   }
 
   onSubmitChange = (isChart) => {
@@ -54,7 +55,7 @@ class App extends Component {
           ?
             <GraphForm loadData={this.loadData} onSubmitChange={this.onSubmitChange}/>
           :
-            <GraphImage name={this.state.graphName} num={this.state.numbers} options={this.state.option}  />
+            <GraphImage name={this.state.graphName} num={this.state.numbers} option={this.state.option}  />
         }
         
       </div>

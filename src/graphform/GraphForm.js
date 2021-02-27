@@ -8,7 +8,7 @@ class GraphForm extends Component {
     this.state = {
       graphName: '',
       numbers: [],
-      option: 'barchart',
+      option: 'spline',
       chart: false
     }
   }
@@ -59,12 +59,12 @@ class GraphForm extends Component {
                     onChange={this.onNumbersChange}/>
           </div>
           <div className="measure">
-            <input className="mr2 bg-transparent" type="radio" id="barchart" value="barchart" checked={this.state.option === "barchart"}
+            <input className="mr2 bg-transparent" type="radio" id="barchart" value="barchart" checked={this.state.option === "column"}
                     onChange={this.onOptionChange}/>
             <label for="barchart" className="lh-copy b white f6">Bar Chart</label>
           </div>
           <div className="measure">
-            <input className="mr2 bg-transparent" type="radio" id="linechart" value="linechart" checked={this.state.option === "linechart"}
+            <input className="mr2 bg-transparent" type="radio" id="linechart" value="linechart" checked={this.state.option === "spline"}
                     onChange={this.onOptionChange}/>
             <label for="linechart" className="lh-copy b white f6">Line Chart</label>
           </div>
